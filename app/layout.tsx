@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import localFont from 'next/font/local';
+import localFont from "next/font/local";
 import "./globals.css";
 
 const YekanBakh = localFont({
-  src: '../public/font/YekanBakhFaNum-Regular.woff2',
-})
+  src: "../public/font/YekanBakhFaNum-Regular.woff2",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +18,32 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa">
-      <body className={`bg-slate-900 text-slate-200 ${YekanBakh.className}`}>{children}</body>
+      <body className={`bg-slate-900 text-slate-200 ${YekanBakh.className}`}>
+        <header>
+          <nav className="bg-slate-50">
+            <section className="w-full flex items-center justify-center py-6 lg:py-4 sm:border-b-1">
+              <div className="container mx-auto px-4 lg:px-8">
+                <nav className="w-full flex xl:items-center sm:justify-between justify-evenly gap-2">
+                  <div className="inline-flex items-center xl:hidden"></div>
+
+                  <div className="hidden xl:flex xl:items-center xl:justify-center gap-4"></div>
+                </nav>
+              </div>
+            </section>
+            <section className="w-full hidden xl:flex xl:items-center xl:justify-center py-6 lg:py-4 bg-[#ECECEC]">
+              <div className="container mx-auto px-4 lg:px-8">
+                <div className="w-full flex items-center justify-between">
+                  <div className="w-full flex items-center justify-center gap-5"></div>
+                  <div className="w-auto"></div>
+                </div>
+              </div>
+            </section>
+          </nav>
+        </header>
+        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
