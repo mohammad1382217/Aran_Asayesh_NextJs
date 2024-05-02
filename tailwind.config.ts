@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      colors: {
+        primary : "#8754AF",
+      },
       keyframes: {
         "caret-blink": {
           "0%,70%,100%": { opacity: "1" },
