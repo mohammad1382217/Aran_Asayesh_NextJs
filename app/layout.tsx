@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Header from "../components/ui/customUi/header";
 import UserProvider from "./hooks/userProvider";
+import CategoryProvider from "./hooks/categoryProvider";
 
 const YekanBakh = localFont({
   src: "../public/font/YekanBakhFaNum-Regular.woff2",
@@ -20,18 +21,20 @@ const RootLayout = ({
 }>) => {
   return (
     <UserProvider>
-      <html lang="fa" dir="rtl">
-        <body
-          className={`w-full h-screen min-h-screen overflow-y-auto ${YekanBakh.className}`}
-        >
-          <header className="shadow-md border-b-1 shadow-[#00000040]">
-            <Header />
-          </header>
-          <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            {children}
-          </main>
-        </body>
-      </html>
+      <CategoryProvider>
+        <html lang="fa" dir="rtl">
+          <body
+            className={`w-full h-screen min-h-screen overflow-y-auto ${YekanBakh.className}`}
+          >
+            <header className="shadow-md border-b-1 shadow-[#00000040]">
+              <Header />
+            </header>
+            <main className="flex min-h-screen flex-col items-center justify-between p-24">
+              {children}
+            </main>
+          </body>
+        </html>
+      </CategoryProvider>
     </UserProvider>
   );
 };

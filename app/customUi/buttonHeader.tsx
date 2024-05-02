@@ -33,22 +33,6 @@ const ButtonHeader = () => {
     } else {
       setIsLoggedIn(false);
     }
-
-    const getCategory = async () => {
-      const resCat = await fetch(`${baseUrl}category/`);
-      // The return value is *not* serialized
-      // You can return Date, Map, Set, etc.
-
-      if (!resCat.ok) {
-        // This will activate the closest error.js Error Boundary
-        throw new Error("Failed to fetch data");
-      }
-      // setAccount(await resCat.json());
-      return resCat.json();
-    };
-
-    getCategory();
-
   }, [isLoggedIn]);
 
   const showModalLogin = () => setIsShowModalLogin(!isShowModalLogin);
