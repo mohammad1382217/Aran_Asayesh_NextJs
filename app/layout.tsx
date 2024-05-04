@@ -1,9 +1,9 @@
 import "./globals.scss";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Header from "../components/ui/customUi/header";
+import Header from "../components/header";
 import UserProvider from "./hooks/userProvider";
-import CategoryProvider from "./hooks/categoryProvider";
+// import CategoryProvider from "./hooks/categoryProvider";
 
 const YekanBakh = localFont({
   src: "../public/font/YekanBakhFaNum-Regular.woff2",
@@ -21,9 +21,9 @@ const RootLayout = ({
 }>) => {
   return (
     <UserProvider>
-      <CategoryProvider>
-        <html lang="fa" dir="rtl">
-          <body
+      {/* <CategoryProvider> */}
+        <html lang="fa-IR" dir="rtl">
+          <body style={{marginRight: "0 !important", overflow: "auto !important"}}
             className={`w-full h-screen min-h-screen overflow-y-auto ${YekanBakh.className}`}
           >
             <header className="shadow-md border-b-1 shadow-[#00000040]">
@@ -34,7 +34,7 @@ const RootLayout = ({
             </main>
           </body>
         </html>
-      </CategoryProvider>
+      {/* </CategoryProvider> */}
     </UserProvider>
   );
 };

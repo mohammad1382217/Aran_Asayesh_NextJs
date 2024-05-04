@@ -2,9 +2,9 @@
 
 import React from "react";
 import { HiDownload } from "react-icons/hi";
-import { baseUrl } from "../config/apiconfig";
+import { baseUrl } from "../app/config/apiconfig";
 import { Button } from "@/components/ui/button";
-import { UserContext } from "../hooks/userProvider";
+import { UserContext } from "../app/hooks/userProvider";
 import { useRouter } from "next/navigation";
 
 const ButtonHeader = () => {
@@ -15,21 +15,21 @@ const ButtonHeader = () => {
 
   React.useEffect(() => {
     if (localStorage.getItem("accessToken")) {
-      const getAccount = async () => {
-        const resAcc = await fetch(`${baseUrl}account/`);
+      const getData = async () => {
+        const res = await fetch(`${baseUrl}account`);
         // The return value is *not* serialized
         // You can return Date, Map, Set, etc.
 
-        if (!resAcc.ok) {
+        if (!res.ok) {
           // This will activate the closest error.js Error Boundary
           throw new Error("Failed to fetch data");
         }
         setIsLoggedIn(true);
-        setAccount(await resAcc.json());
-        return resAcc.json();
+        setAccount(await res.json());
+        return res.json();
       };
 
-      getAccount();
+      getData();
     } else {
       setIsLoggedIn(false);
     }
